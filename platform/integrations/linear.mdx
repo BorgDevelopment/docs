@@ -1,0 +1,43 @@
+---
+title: "Linear Integration"
+description: "Push findings to Linear"
+icon: "arrow-right"
+---
+
+Connect Odin to Linear to push security findings into your engineering workflow.
+
+## Connecting
+
+<Steps>
+  <Step title="Open Integrations">
+    Go to **Management > Integrations** in the sidebar.
+  </Step>
+  <Step title="Connect Linear">
+    Click **Connect** next to Linear and authorise the Odin app via Linear's OAuth flow.
+  </Step>
+  <Step title="Select your team">
+    Choose the Linear team where issues should be created.
+  </Step>
+</Steps>
+
+<Frame caption="Authorise Odin to create issues in your Linear workspace">
+  <img src="/images/integrations/linear-connect.png" alt="Odin integrations page showing the Linear connect flow" />
+</Frame>
+
+## Pushing a finding
+
+On any finding, click **Push to Linear**. Odin creates a Linear issue with:
+
+- Finding title and severity as the issue title and priority
+- Description, reproduction steps, and suggested fix in the issue body
+- A label indicating the source (e.g. `mjolnir`, `security`)
+
+<Tip>
+  You can push multiple findings at once using the bulk action toolbar on the Findings page.
+</Tip>
+
+## Notes
+
+- Issues are created in the team you selected during setup
+- Linear issue status is managed in Linear. Odin tracks remediation separately.
+- You can update which team findings are sent to at any time from the Integrations page

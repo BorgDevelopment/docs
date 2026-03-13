@@ -1,0 +1,33 @@
+---
+title: "API Key"
+description: "Configure a test user that authenticates with an API key"
+icon: "key"
+---
+
+Use this when your application (or the API layer being tested) authenticates requests using a static API key, typically passed as a header.
+
+## What to provide
+
+```text
+API Key: your-api-key-here
+Header name: Authorization
+Header format: Bearer {key}
+```
+
+Common header formats:
+
+| Header | Format | Example |
+|--------|--------|---------|
+| Authorization | `Bearer {key}` | `Authorization: Bearer sk-abc123` |
+| Authorization | `ApiKey {key}` | `Authorization: ApiKey abc123` |
+| X-API-Key | `{key}` | `X-API-Key: abc123` |
+| Custom | varies | `X-Internal-Token: abc123` |
+
+Specify the exact header name and format your application expects.
+
+## Multiple API keys for role testing
+
+If your application scopes API key permissions (e.g. read-only vs read-write keys), add a separate test user entry for each permission level. Label them clearly:
+
+- *"API key, read only"*
+- *"API key, admin"*

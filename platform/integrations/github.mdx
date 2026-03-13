@@ -1,0 +1,46 @@
+---
+title: "GitHub Integration"
+description: "Push findings to GitHub Issues"
+icon: "github"
+---
+
+Connect Odin to GitHub to push security findings directly to your repository's issue tracker.
+
+## Connecting
+
+<Steps>
+  <Step title="Open Integrations">
+    Go to **Management > Integrations** in the sidebar.
+  </Step>
+  <Step title="Connect GitHub">
+    Click **Connect** next to GitHub and authorise the Borg Security GitHub App.
+  </Step>
+  <Step title="Select your organisation">
+    Choose the GitHub organisation or account that owns your repositories.
+  </Step>
+  <Step title="Choose a repository">
+    Select the repository where issues should be created.
+  </Step>
+</Steps>
+
+<Frame caption="Connect your GitHub account from the Integrations page">
+  <img src="/images/integrations/github-connect.png" alt="Odin integrations page showing the GitHub connect flow" />
+</Frame>
+
+## Pushing a finding
+
+On any finding, click **Push to GitHub**. Odin creates a GitHub issue with:
+
+- Finding title as the issue title
+- Severity label (Critical, High, Medium, Low)
+- Full description, reproduction steps, and suggested fix in the issue body
+
+<Tip>
+  You can push multiple findings at once using the bulk action toolbar on the Findings page.
+</Tip>
+
+## Notes
+
+- Issues are created in the repository you selected during setup
+- Odin does not update or close GitHub issues automatically. Status management stays in Odin.
+- You can reconnect to a different repository at any time from the Integrations page

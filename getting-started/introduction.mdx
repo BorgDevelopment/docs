@@ -1,0 +1,61 @@
+---
+title: "Introduction"
+description: "Welcome to Odin, your security operations platform"
+icon: "shield-halved"
+---
+
+Odin is Borg Security's client platform. It gives you a unified view of your organisation's attack surface, manages security findings across all your assets, and hosts Mjolnir, our agentic AI pentest engine.
+
+<Frame caption="The Odin dashboard gives you a real-time view of your security posture">
+  <img src="/images/odin-hero.svg" alt="Odin home dashboard showing security posture overview" className="block dark:hidden" />
+  <img src="/images/odin-hero.svg" alt="Odin home dashboard showing security posture overview" className="hidden dark:block" />
+</Frame>
+
+## What Odin includes
+
+<CardGroup cols={2}>
+  <Card title="Attack surface" icon="radar">
+    Continuously discover and monitor your domains, subdomains, IPs, and APIs. Know what's exposed before attackers do.
+  </Card>
+  <Card title="Findings" icon="magnifying-glass">
+    All security findings in one place, triaged by severity, linked to assets, with suggested remediation steps.
+  </Card>
+  <Card title="Mjolnir" icon="bolt">
+    Agentic AI pentesting. Mjolnir reads your source code, maps your attack surface, generates test cases, and executes them autonomously.
+  </Card>
+  <Card title="Integrations" icon="plug">
+    Push findings directly to Linear, Jira, or GitHub Issues. Keep your security and engineering workflows in sync.
+  </Card>
+</CardGroup>
+
+## How it works
+
+Odin is organised around your **workspace**, a container for your organisation's assets, findings, and pentest history. When you log in, you land on the Home dashboard showing your current security posture at a glance.
+
+The sidebar gives you access to everything:
+
+- **General**: home, alerts, and a global findings view
+- **Attack Surface**: assets, map, and activity feed
+- **Pentests**: Mjolnir (AI whitebox), Black Box, and Triage
+- **Management**: workflows, integrations, reports, and team settings
+
+## Getting started
+
+<Steps>
+  <Step title="Complete your profile">
+    Add your name and photo so your team knows who's who.
+  </Step>
+  <Step title="Review your findings">
+    Head to **Findings** to see your current security posture.
+  </Step>
+  <Step title="Explore your attack surface">
+    Go to **Assets** to see what's been discovered about your organisation.
+  </Step>
+  <Step title="Run your first AI pentest">
+    Navigate to **Pentests > Mjolnir** and follow the setup wizard.
+  </Step>
+</Steps>
+
+<Info>
+  If you're here specifically to set up a Mjolnir AI pentest, jump straight to the [Mjolnir overview](/mjolnir/overview).
+</Info>

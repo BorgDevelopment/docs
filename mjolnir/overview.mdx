@@ -1,0 +1,79 @@
+---
+title: "Mjolnir Overview"
+description: "Autonomous AI-powered whitebox pentesting"
+icon: "bolt"
+---
+
+Mjolnir is Borg Security's agentic AI pentest engine. It reads your source code, maps your application's attack surface, generates targeted test cases, and executes them autonomously, from end to end.
+
+## What makes it whitebox
+
+Traditional automated scanners probe your application from the outside. Mjolnir starts from the inside, reading your source code to understand your routes, authentication flows, data models, and business logic before it ever sends a single request.
+
+This means it finds vulnerabilities that black-box tools miss: logic flaws, broken access controls, misconfigured authorization chains, and authentication bypasses that only make sense once you understand the code behind them.
+
+## How a run works
+
+<Steps>
+  <Step title="Reconnaissance">
+    Mjolnir crawls your application and cross-references what it finds with your source code to build a complete picture of the attack surface.
+  </Step>
+  <Step title="Attack surface mapping">
+    Routes, endpoints, middleware chains, authentication boundaries, and data flows are mapped and catalogued.
+  </Step>
+  <Step title="Test case generation">
+    Based on the attack surface, Mjolnir generates targeted test cases for each vulnerability category: authentication, authorization, injection, and more.
+  </Step>
+  <Step title="Execution">
+    Test cases are executed against your target URLs using your provided test users and credentials.
+  </Step>
+  <Step title="Reporting">
+    Confirmed findings are written up with severity ratings, reproduction steps, and suggested fixes, then pushed straight to your issue tracker if you have one connected.
+  </Step>
+</Steps>
+
+<Frame caption="The Mjolnir run dashboard lets you follow the assessment in real time">
+  <img src="/images/mjolnir/run-dashboard.png" alt="Mjolnir run dashboard showing live progress of a pentest run" />
+</Frame>
+
+## What Mjolnir tests for
+
+Mjolnir generates test cases across a broad range of vulnerability categories, including:
+
+<CardGroup cols={2}>
+  <Card title="Authentication" icon="lock">
+    Login bypasses, weak credential policies, session fixation, token leakage, and insecure password reset flows.
+  </Card>
+  <Card title="Authorization" icon="user-shield">
+    Privilege escalation (vertical and horizontal), broken access controls, IDOR, and missing function-level checks.
+  </Card>
+  <Card title="Injection" icon="syringe">
+    SQL injection, NoSQL injection, command injection, SSTI, and other server-side injection vectors.
+  </Card>
+  <Card title="Data exposure" icon="eye">
+    Sensitive data in responses, overly permissive API fields, PII leaks, and missing data redaction.
+  </Card>
+</CardGroup>
+
+## No-cure, no-pay
+
+If Mjolnir doesn't find any vulnerabilities, you don't pay. Simple as that.
+
+Your Borg subscription covers the full Odin platform: continuous asset discovery, findings management, issue tracker integration, and reporting. The Mjolnir pentest minutes are part of a broader platform designed to improve your security posture over time.
+
+## Setting up a run
+
+A Mjolnir run is configured through a six-step wizard:
+
+| Step | What you do |
+|------|-------------|
+| 1. Connect GitHub | Grant Mjolnir read access to your repositories |
+| 2. Scope & Connectivity | Define target URLs and verify Mjolnir can reach them |
+| 3. Test Users | Add authenticated test accounts for role and tenant testing |
+| 4. Code & Documentation | Select repos and upload supporting files |
+| 5. Pricing | Confirm your plan or select one |
+| 6. Review & Verify Domain | Review configuration and prove domain ownership |
+
+<Card title="Start setup: Connect GitHub" icon="github" href="/mjolnir/setup/connect-github">
+  Begin the Mjolnir setup wizard
+</Card>

@@ -1,0 +1,51 @@
+---
+title: "Reports"
+description: "Generate and export security reports from Odin"
+icon: "file-lines"
+---
+
+Reports give you a structured summary of your security posture, useful for internal reviews, compliance, or sharing with stakeholders.
+
+## Available report types
+
+<CardGroup cols={2}>
+  <Card title="Pentest report" icon="shield-check">
+    A full write-up of a specific Mjolnir run, including findings, reproduction steps, severity ratings, and suggested fixes. Generated automatically at the end of each run.
+  </Card>
+  <Card title="Findings summary" icon="chart-bar">
+    A snapshot of all open findings across your workspace, grouped by severity. Useful for executive briefings and compliance reviews.
+  </Card>
+</CardGroup>
+
+## What's in a pentest report
+
+Each pentest report includes:
+
+- **Executive summary**: high-level overview of the assessment scope, methodology, and key results
+- **Findings breakdown**: every confirmed vulnerability with severity, description, reproduction steps, and suggested fix
+- **Risk summary**: an aggregated view of risk by severity and category
+- **Scope details**: the target URLs, repositories, and test users used during the run
+- **Methodology**: how Mjolnir performed the assessment (reconnaissance, attack surface mapping, test case generation, execution)
+
+## Exporting
+
+Reports can be exported as PDF. Navigate to **Management > Reports**, select the report you want, and click **Export**.
+
+<Frame caption="Export a pentest report as PDF from the Reports page">
+  <img src="/images/platform/report-export.png" alt="Odin reports page showing export options" />
+</Frame>
+
+## Scheduled reports
+
+<Note>
+  Scheduled reports are available on the Business plan.
+</Note>
+
+Business plan customers receive a monthly email report summarising:
+
+- New findings discovered since the last report
+- Remediation progress across open findings
+- Attack surface changes (new domains, subdomains, or endpoints discovered)
+- A comparison of your security posture month over month
+
+Contact us at [security@borgresearch.io](mailto:security@borgresearch.io) to configure scheduled reports for your workspace.

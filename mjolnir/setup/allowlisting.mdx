@@ -1,0 +1,92 @@
+---
+title: "Allowlisting Borg IPs"
+description: "Let Mjolnir through your WAF or firewall"
+icon: "shield-check"
+---
+
+If Mjolnir's connectivity check detects a WAF, rate limiter, or firewall blocking its requests, you'll need to add our IP ranges to your allowlist.
+
+## Mjolnir IP ranges
+
+Add the following IP ranges to your allowlist:
+
+```text
+# Mjolnir egress IPs
+# Contact security@borgresearch.io for the current list
+```
+
+<Info>
+  The current IP list is provided during onboarding and is available in your Odin workspace settings. If you need it urgently, email [security@borgresearch.io](mailto:security@borgresearch.io).
+</Info>
+
+## Platform guides
+
+<AccordionGroup>
+  <Accordion title="Cloudflare WAF">
+    1. Log in to the Cloudflare dashboard and select your domain
+    2. Go to **Security > WAF > Tools**
+    3. Under **IP Access Rules**, click **Add a rule**
+    4. Set **Value** to each Mjolnir IP range
+    5. Set **Action** to **Allow**
+    6. Set **Zone** to apply to your specific domain (or all zones if needed)
+    7. Click **Add**
+
+    Repeat for each IP range.
+
+    <Tip>
+      If you're using Cloudflare's Bot Fight Mode or Super Bot Fight Mode, you may also need to create a **Configuration Rule** that bypasses bot detection for these IPs.
+    </Tip>
+  </Accordion>
+
+  <Accordion title="AWS WAF">
+    1. Go to the AWS Console > **WAF & Shield > IP sets**
+    2. Click **Create IP set**
+    3. Name it `mjolnir-allowlist`, select your region, and paste in the Mjolnir IP ranges
+    4. Go to your Web ACL > **Rules > Add rule > Add my own rules**
+    5. Select **IP set** and choose the set you just created
+    6. Set the action to **Allow**
+    7. Set the rule priority high enough to evaluate before any blocking rules
+
+    Make sure the rule is set to **Allow**, not Count.
+  </Accordion>
+
+  <Accordion title="Nginx (rate limiting)">
+    If you're using Nginx's `limit_req` module to rate-limit requests, you can exempt Mjolnir's IPs using the `geo` module:
+
+    ```nginx
+    geo $limit {
+        default 1;
+        # Mjolnir IPs (replace with actual ranges)
+        1.2.3.4/32 0;
+    }
+
+    map $limit $limit_key {
+        0 "";
+        1 $binary_remote_addr;
+    }
+
+    limit_req_zone $limit_key zone=api:10m rate=10r/s;
+    ```
+
+    Reload Nginx after making changes: `nginx -s reload`
+  </Accordion>
+
+  <Accordion title="AWS Security Groups / Network ACLs">
+    If your application is behind an AWS Security Group or NACL that restricts inbound traffic:
+
+    1. Go to **EC2 > Security Groups** and select the group attached to your application
+    2. Click **Inbound rules > Edit inbound rules**
+    3. Add a new rule for each Mjolnir IP range:
+       - **Type**: HTTPS (or the appropriate port)
+       - **Source**: Mjolnir IP range
+    4. Save the rules
+
+    For Network ACLs, make sure both the inbound **allow** rule and the corresponding outbound rule for ephemeral ports are in place.
+  </Accordion>
+</AccordionGroup>
+
+## After updating your allowlist
+
+Go back to the Mjolnir setup wizard and click **Re-run connectivity check**. The status for your URLs should update to ✅ Reachable.
+
+If you're still seeing issues after allowlisting, contact us at [security@borgresearch.io](mailto:security@borgresearch.io). There may be additional layers of protection we can help you identify.

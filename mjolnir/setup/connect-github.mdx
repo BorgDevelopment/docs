@@ -1,0 +1,63 @@
+---
+title: "Step 1: Connect GitHub"
+description: "Grant Mjolnir read access to your repositories"
+icon: "github"
+---
+
+The first step in setting up a Mjolnir run is connecting your GitHub account. This gives Mjolnir read access to your source code, the foundation of the whitebox approach.
+
+<Info>
+  Mjolnir only ever requests **read access**. It will never push code, open pull requests, or modify anything in your repositories.
+</Info>
+
+## How to connect
+
+<Steps>
+  <Step title="Start the connection">
+    In the Mjolnir setup wizard, click **Connect GitHub**.
+  </Step>
+  <Step title="Authorise the app">
+    You'll be redirected to GitHub to authorise the Borg Security GitHub App.
+  </Step>
+  <Step title="Select your organisation">
+    Choose the GitHub organisation or account that owns your repositories.
+  </Step>
+  <Step title="Grant repository access">
+    Select the repositories you want to make available to Mjolnir.
+  </Step>
+  <Step title="Confirm">
+    You'll be redirected back to Odin. Your connected account will appear with a green checkmark.
+  </Step>
+</Steps>
+
+## Selecting repositories
+
+After connecting, you'll see a list of repositories from your connected GitHub organisation. Select all repositories that belong to your organisation.
+
+<Tip>
+  Select broadly here. You can narrow down which repos are used for this specific run in [Step 4: Code & Documentation](/mjolnir/code-and-docs/repositories). Selecting more repos now just makes them available as options later.
+</Tip>
+
+## Already connected?
+
+If you've previously connected GitHub (e.g. for another run), Odin will show your existing connection with the option to:
+- **Continue** with the current connection
+- **Switch account** to authenticate with a different GitHub account or organisation
+
+## Troubleshooting
+
+<AccordionGroup>
+  <Accordion title="I can't see my organisation's repositories">
+    GitHub App installations require explicit permission from a GitHub organisation owner. If you're not an org owner, ask your GitHub admin to approve the Borg Security app installation at `github.com/organizations/YOUR_ORG/settings/installations`.
+  </Accordion>
+  <Accordion title="I only see some of my repositories">
+    The GitHub App may have been installed with repository-scoped access rather than full org access. Go to your GitHub org settings > Installed GitHub Apps > Borg Security and update the repository access to **All repositories** (or add the specific ones you need).
+  </Accordion>
+  <Accordion title="The OAuth flow failed or timed out">
+    Close the tab and try again from the Mjolnir wizard. If the issue persists, contact us at [security@borgresearch.io](mailto:security@borgresearch.io).
+  </Accordion>
+</AccordionGroup>
+
+<Card title="Next: Scope & Connectivity" icon="arrow-right" href="/mjolnir/setup/scope-and-connectivity">
+  Define the URLs Mjolnir will test
+</Card>

@@ -1,0 +1,33 @@
+---
+title: "Google"
+description: "Configure a test user that authenticates via Google OAuth"
+icon: "google"
+---
+
+Use this auth method when your application's login flow uses "Sign in with Google" via Google Workspace or a personal Google account.
+
+## What to provide
+
+In the **Authentication instructions** field, include:
+
+```text
+Email: testuser@yourdomain.com
+Google OAuth consent: pre-approved
+Note any SSO restrictions or domain lockdowns (e.g. only @yourdomain.com accounts allowed)
+```
+
+## Pre-approving OAuth consent
+
+To allow Mjolnir to authenticate without manual consent screens:
+
+1. Go to your Google Workspace Admin Console > **Security > API controls > App access control**
+2. Add Borg Security as a trusted app, or set the test account's OAuth scopes to auto-approve
+3. Alternatively, log into the test account manually once to complete the consent flow before the run
+
+<Tip>
+  Using a dedicated test Google account (not a real employee account) is recommended. Create one at [accounts.google.com](https://accounts.google.com) and grant it the appropriate role in your application.
+</Tip>
+
+## If your app restricts login to specific domains
+
+Note this in the instructions field. Mjolnir needs to know if only `@yourcompany.com` accounts are accepted so it doesn't waste test cases on invalid login attempts.

@@ -1,68 +1,88 @@
 {
   "$schema": "https://mintlify.com/docs.json",
   "theme": "mint",
-  "name": "Mint Starter Kit",
+  "name": "Odin",
   "colors": {
-    "primary": "#16A34A",
-    "light": "#07C983",
-    "dark": "#15803D"
+    "primary": "#0f1a29",
+    "light": "#809cff",
+    "dark": "#091320"
   },
-  "favicon": "/favicon.svg",
+  "favicon": "/favicon.ico",
+  "logo": {
+    "light": "/logo/light.svg",
+    "dark": "/logo/dark.svg"
+  },
   "navigation": {
     "tabs": [
       {
-        "tab": "Guides",
+        "tab": "Getting Started",
+        "icon": "book-open",
         "groups": [
           {
-            "group": "Getting started",
+            "group": "Overview",
             "pages": [
-              "index",
-              "quickstart",
-              "development"
+              "getting-started/introduction",
+              "getting-started/quickstart"
             ]
           },
           {
-            "group": "Customization",
+            "group": "Platform",
             "pages": [
-              "essentials/settings",
-              "essentials/navigation"
-            ]
-          },
-          {
-            "group": "Writing content",
-            "pages": [
-              "essentials/markdown",
-              "essentials/code",
-              "essentials/images",
-              "essentials/reusable-snippets"
-            ]
-          },
-          {
-            "group": "AI tools",
-            "pages": [
-              "ai-tools/cursor",
-              "ai-tools/claude-code",
-              "ai-tools/windsurf"
+              "platform/findings",
+              "platform/reports",
+              "platform/integrations/github",
+              "platform/integrations/linear",
+              "platform/integrations/jira"
             ]
           }
         ]
       },
       {
-        "tab": "API reference",
+        "tab": "Mjolnir",
+        "icon": "bolt",
         "groups": [
           {
-            "group": "API documentation",
+            "group": "Overview",
             "pages": [
-              "api-reference/introduction"
+              "mjolnir/overview"
             ]
           },
           {
-            "group": "Endpoint examples",
+            "group": "Setup",
             "pages": [
-              "api-reference/endpoint/get",
-              "api-reference/endpoint/create",
-              "api-reference/endpoint/delete",
-              "api-reference/endpoint/webhook"
+              "mjolnir/setup/connect-github",
+              "mjolnir/setup/scope-and-connectivity",
+              "mjolnir/setup/allowlisting"
+            ]
+          },
+          {
+            "group": "Test Users",
+            "pages": [
+              "mjolnir/test-users/overview",
+              "mjolnir/test-users/google",
+              "mjolnir/test-users/microsoft",
+              "mjolnir/test-users/username-password",
+              "mjolnir/test-users/username-password-mfa",
+              "mjolnir/test-users/username-password-email",
+              "mjolnir/test-users/username-password-sms",
+              "mjolnir/test-users/api-key",
+              "mjolnir/test-users/oauth-client-credentials",
+              "mjolnir/test-users/oauth-password-grant",
+              "mjolnir/test-users/magic-link",
+              "mjolnir/test-users/other"
+            ]
+          },
+          {
+            "group": "Code & Documentation",
+            "pages": [
+              "mjolnir/code-and-docs/repositories",
+              "mjolnir/code-and-docs/file-uploads"
+            ]
+          },
+          {
+            "group": "Domain Verification",
+            "pages": [
+              "mjolnir/domain-verification/overview"
             ]
           }
         ]
@@ -71,52 +91,42 @@
     "global": {
       "anchors": [
         {
-          "anchor": "Documentation",
-          "href": "https://mintlify.com/docs",
-          "icon": "book-open-cover"
+          "anchor": "Support",
+          "href": "mailto:security@borgresearch.io",
+          "icon": "envelope"
         },
         {
-          "anchor": "Blog",
-          "href": "https://mintlify.com/blog",
-          "icon": "newspaper"
+          "anchor": "Dashboard",
+          "href": "https://odin.borghq.io",
+          "icon": "gauge"
         }
       ]
     }
-  },
-  "logo": {
-    "light": "/logo/light.svg",
-    "dark": "/logo/dark.svg"
   },
   "navbar": {
     "links": [
       {
         "label": "Support",
-        "href": "mailto:hi@mintlify.com"
+        "href": "mailto:security@borgresearch.io"
       }
     ],
     "primary": {
       "type": "button",
       "label": "Dashboard",
-      "href": "https://dashboard.mintlify.com"
+      "href": "https://odin.borghq.io"
     }
   },
   "contextual": {
     "options": [
-     "copy",
-     "view",
-     "chatgpt",
-     "claude",
-     "perplexity",
-     "mcp",
-     "cursor",
-     "vscode"
-   ]
+      "copy",
+      "view",
+      "claude"
+    ]
   },
   "footer": {
     "socials": {
-      "x": "https://x.com/mintlify",
-      "github": "https://github.com/mintlify",
-      "linkedin": "https://linkedin.com/company/mintlify"
+      "x": "https://x.com/borg_security",
+      "linkedin": "https://linkedin.com/company/borg-security"
     }
   }
 }

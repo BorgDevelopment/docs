@@ -1,0 +1,51 @@
+---
+title: "Jira Integration"
+description: "Push findings to Jira"
+icon: "ticket"
+---
+
+Connect Odin to Jira to push security findings into your project management workflow.
+
+## Connecting
+
+<Steps>
+  <Step title="Open Integrations">
+    Go to **Management > Integrations** in the sidebar.
+  </Step>
+  <Step title="Connect Jira">
+    Click **Connect** next to Jira. You'll be redirected to Atlassian to authorise the Odin app.
+  </Step>
+  <Step title="Select your site">
+    Choose the Jira Cloud site where issues should be created.
+  </Step>
+  <Step title="Choose a project">
+    Select the Jira project that should receive security findings.
+  </Step>
+</Steps>
+
+<Frame caption="Connect your Jira Cloud site from the Integrations page">
+  <img src="/images/integrations/jira-connect.png" alt="Odin integrations page showing the Jira connect flow" />
+</Frame>
+
+## Pushing a finding
+
+On any finding, click **Push to Jira**. Odin creates a Jira issue with:
+
+- Finding title as the issue summary
+- Severity mapped to Jira priority (Critical, High, Medium, Low)
+- Full description, reproduction steps, and suggested fix in the issue body
+
+<Tip>
+  You can push multiple findings at once using the bulk action toolbar on the Findings page.
+</Tip>
+
+## Issue type mapping
+
+By default, Odin creates issues with the **Bug** issue type. If your Jira project uses a custom issue type for security findings (e.g. "Vulnerability" or "Security Bug"), contact us at [security@borgresearch.io](mailto:security@borgresearch.io) to configure the mapping.
+
+## Notes
+
+- Issues are created in the project you selected during setup
+- Odin does not update or close Jira issues automatically. Status management stays in Odin.
+- You can switch to a different Jira project at any time from the Integrations page
+- Only Jira Cloud is supported. Jira Server and Jira Data Center are not currently available.

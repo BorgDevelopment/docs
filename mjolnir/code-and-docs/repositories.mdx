@@ -1,0 +1,38 @@
+---
+title: "Step 4: Repositories"
+description: "Select the source code repositories for this run"
+icon: "code"
+---
+
+Mjolnir's whitebox advantage comes from reading your source code. In this step, you select which repositories it should analyse for this specific run.
+
+## Selecting repositories
+
+The dropdown is populated from the repositories you connected in [Step 1](/mjolnir/setup/connect-github). Select every repository that is directly involved in the scope of this test.
+
+**Maximum: 4 repositories per run.**
+
+<Info>
+  All selected repositories should tie directly to the target URLs you defined in Step 2. If a repo isn't involved in serving or supporting those URLs, leave it out.
+</Info>
+
+## How many repos to include
+
+| Situation | What to select |
+|-----------|----------------|
+| Single full-stack repo | Just that one repo (ideal) |
+| Separate frontend + backend | Both repos |
+| Frontend + backend + infrastructure (IaC) | All three |
+| Monorepo with multiple services | The monorepo. Mjolnir will navigate it. |
+
+<Tip>
+  One repo is the simplest and most effective setup. If you have a separate frontend and backend, include both. Mjolnir correlates client-side routes with server-side handlers to find mismatches in access control.
+</Tip>
+
+## Why the 4-repo limit?
+
+Mjolnir performs deep analysis of every file in every selected repository. Beyond 4 repos, the analysis time increases significantly without proportional benefit. If your application spans more than 4 repos, prioritise the ones closest to your attack surface (backend API, auth service, core frontend).
+
+<Card title="Next: File Uploads" icon="arrow-right" href="/mjolnir/code-and-docs/file-uploads">
+  Upload OpenAPI specs, documentation, and other supporting files
+</Card>

@@ -1,0 +1,76 @@
+---
+title: "Step 2: Scope & Connectivity"
+description: "Define your target URLs and verify Mjolnir can reach them"
+icon: "globe"
+---
+
+This step has two parts: defining the URLs Mjolnir will test, and verifying it can actually reach them. Both happen on the same page.
+
+## Part A: Target URLs & custom headers
+
+### Adding target URLs
+
+Enter the URLs that make up your application's scope. These are the endpoints Mjolnir will test.
+
+```text
+https://app.example.com
+https://api.example.com
+```
+
+You can add multiple URLs. Each one gets its own connectivity check and can have its own custom headers.
+
+<Warning>
+  Only add URLs you own and are authorised to test. Mjolnir will send real HTTP requests, including probes that may look like attack traffic, to everything in scope.
+</Warning>
+
+### Custom headers
+
+Each URL can have custom HTTP headers attached. These are sent with every request Mjolnir makes to that URL.
+
+Common uses:
+
+| Header | Example value | Why |
+|--------|---------------|-----|
+| Bypass rate limiting | `X-Internal-Token: abc123` | Prevent your WAF from blocking Mjolnir's probes |
+| Route to staging | `X-Forwarded-Host: staging.example.com` | Point traffic to a test environment |
+| Auth bypass for testing | `X-Test-Mode: true` | Skip CAPTCHA or bot detection on test environments |
+
+Click **Add header** under any URL to add key/value pairs.
+
+<Info>
+  Not sure what headers to add? If your application uses a WAF like Cloudflare or AWS WAF, see [Part B](#part-b-connectivity-check--allowlisting) below. Allowlisting our IPs is often more reliable than header bypasses.
+</Info>
+
+---
+
+## Part B: Connectivity check & allowlisting
+
+Once you've added your URLs, Mjolnir runs an automatic connectivity check. This takes a few seconds per URL.
+
+### Status indicators
+
+| Status | Meaning |
+|--------|---------|
+| ✅ Reachable | Mjolnir can reach this URL without issues |
+| ⚠️ Reachable with warnings | Requests are getting through but being flagged or throttled by a WAF or rate limiter |
+| ❌ Unreachable | Mjolnir cannot reach this URL at all |
+
+### If you see ⚠️ or ❌
+
+You'll need to add Mjolnir's IP ranges to your allowlist. This tells your WAF, firewall, or CDN to let our traffic through without interference.
+
+See the full allowlisting guide:
+
+<Card title="How to set up an allowlist for Mjolnir" icon="shield-check" href="/mjolnir/setup/allowlisting">
+  Step-by-step instructions for Cloudflare, AWS WAF, and others
+</Card>
+
+Once you've updated your allowlist, click **Re-run check** to confirm the issue is resolved.
+
+### Proceeding with connectivity issues
+
+You can proceed even if connectivity issues remain, but you'll see a persistent warning banner. Unresolved connectivity issues will reduce test coverage because Mjolnir may miss endpoints it can't reliably reach.
+
+<Card title="Next: Test Users" icon="arrow-right" href="/mjolnir/test-users/overview">
+  Add authenticated test accounts for role and tenant testing
+</Card>

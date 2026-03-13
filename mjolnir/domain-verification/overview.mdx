@@ -1,0 +1,117 @@
+---
+title: "Domain Verification"
+description: "Prove ownership of the domains you're testing"
+icon: "badge-check"
+---
+
+Before Mjolnir starts a run, you must verify that you own or are authorised to test the target domains. This is a one-time step per domain.
+
+Choose one of three verification methods. All three are equally valid. Pick whichever is easiest given your DNS and hosting setup.
+
+---
+
+## Method 1: CNAME record
+
+Add a CNAME record to your domain's DNS configuration.
+
+| Field | Value |
+|-------|-------|
+| Type | `CNAME` |
+| Name | `{your-generated-token}.borgsecurity.io` |
+| Value | `verify.mjolnir.{your-generated-token}` |
+
+The exact values are generated for your organisation and shown in the setup wizard. Copy them directly from there.
+
+**How to add a CNAME record:**
+
+<AccordionGroup>
+  <Accordion title="Cloudflare">
+    1. Go to your domain in the Cloudflare dashboard
+    2. Click **DNS > Records > Add record**
+    3. Set Type to `CNAME`, Name to the provided value, and Target to the provided value
+    4. Set Proxy status to **DNS only** (grey cloud). Proxied CNAME records won't resolve correctly for verification.
+    5. Click **Save**
+  </Accordion>
+  <Accordion title="AWS Route 53">
+    1. Open the Route 53 console and go to **Hosted zones**
+    2. Select your domain and click **Create record**
+    3. Set Record type to `CNAME`, Record name to the provided value, and Value to the provided value
+    4. Click **Create records**
+  </Accordion>
+  <Accordion title="GoDaddy">
+    1. Log in and go to **My Products > DNS**
+    2. Click **Add** and select `CNAME`
+    3. Fill in the Name and Value fields with the provided values
+    4. Click **Save**
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## Method 2: TXT record
+
+Add a TXT record to your domain's DNS.
+
+| Field | Value |
+|-------|-------|
+| Type | `TXT` |
+| Name | `_mjolnir-verify.yourdomain.com` |
+| Value | `mjolnir-verify={your-generated-token}` |
+
+TXT records typically propagate within a few minutes but can take up to 48 hours in rare cases. Most DNS providers update within 5-10 minutes.
+
+---
+
+## Method 3: File upload
+
+Host a specific text file at a known URL on your domain.
+
+**Place the file at:**
+```text
+https://yourdomain.com/mjolnir.txt
+```
+
+**File contents:**
+```text
+validation.mjolnir.{your-generated-token}
+```
+
+The file should be publicly accessible over HTTPS, return a `200` status code, and contain only the validation string (no extra whitespace or HTML).
+
+<Tip>
+  This method is useful if you don't have access to DNS but can deploy a file to your web server or CDN.
+</Tip>
+
+---
+
+## Verifying
+
+Once you've completed your chosen method, click **Verify Domain** in the setup wizard. Mjolnir will check for the record or file and confirm ownership.
+
+**Status indicators:**
+- 🔄 Checking...
+- ✅ Verified
+- ❌ Verification failed (the record or file wasn't found)
+
+<Frame caption="A successful domain verification in the setup wizard">
+  <img src="/images/checks-passed.png" alt="Domain verification showing all checks passed" />
+</Frame>
+
+If verification fails, double-check that:
+- You used the exact values shown in the wizard (copy-paste, don't retype)
+- DNS changes have had time to propagate (wait a few minutes and retry)
+- The file is accessible over HTTPS without a redirect
+
+If you're still having trouble, contact us at [security@borgresearch.io](mailto:security@borgresearch.io).
+
+---
+
+## After verification
+
+Once your domain is verified, the **Run Assessment** button becomes active. Click it to launch Mjolnir.
+
+You'll be redirected to the live run dashboard where you can watch the assessment in real time.
+
+<Info>
+  Domain verification persists. Once a domain is verified, you won't need to re-verify it for future runs against the same domain.
+</Info>

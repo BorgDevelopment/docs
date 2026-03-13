@@ -1,0 +1,64 @@
+---
+title: "Quickstart"
+description: "Get up and running with Odin in minutes"
+icon: "rocket"
+---
+
+This guide walks you through the first things to do after logging in to Odin for the first time.
+
+## 1. Complete your profile
+
+Click your avatar in the top-right corner and select **Profile**. Add your name and a photo. This helps your team identify who made changes and who's responsible for which findings.
+
+## 2. Explore your attack surface
+
+Go to **Attack Surface > Assets** in the sidebar. This is where Odin shows everything it has discovered about your organisation's internet-facing footprint: domains, subdomains, IPs, and APIs.
+
+<Frame caption="The Assets view shows your organisation's discovered internet-facing footprint">
+  <img src="/images/platform/attack-surface-assets.png" alt="Odin attack surface assets view showing discovered domains and IPs" />
+</Frame>
+
+If you've just signed up, asset discovery may still be running. Check back after a few minutes.
+
+## 3. Review your findings
+
+Navigate to **Findings** in the sidebar. Findings are security issues identified across all your assets and pentest runs, sorted by severity.
+
+<Tip>
+  Use the severity filter to focus on **Critical** and **High** findings first. These represent the most immediate risk to your organisation.
+</Tip>
+
+## 4. Connect your integrations
+
+Go to **Management > Integrations** to connect your issue tracker. Odin supports Linear, with support for Jira, Github Issues and more coming soon. Once connected, findings can be pushed directly to your engineering workflow with one click.
+
+<CardGroup cols={3}>
+  <Card title="Linear" icon="arrow-right" href="/platform/integrations/linear">
+    Push findings to Linear
+  </Card>
+  <Card title="Jira" icon="arrow-right" href="/platform/integrations/jira">
+    Push findings to Jira
+  </Card>
+  <Card title="GitHub" icon="github" href="/platform/integrations/github">
+    Push findings to GitHub Issues
+  </Card>
+</CardGroup>
+
+## 5. Run your first AI pentest
+
+This is where Mjolnir comes in. Navigate to **Pentests > Mjolnir > Runs** and click **New Run**.
+
+The setup wizard will guide you through:
+1. Connecting your GitHub repositories
+2. Defining your target URLs and scope
+3. Adding test users
+4. Uploading supporting code and documentation
+5. Verifying domain ownership
+
+<Card title="Set up your first Mjolnir run" icon="bolt" href="/mjolnir/overview">
+  Read the full Mjolnir setup guide
+</Card>
+
+## Need help?
+
+If you get stuck at any point, reach out to us at [security@borgresearch.io](mailto:security@borgresearch.io). We're here to help.

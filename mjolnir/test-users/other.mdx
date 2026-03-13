@@ -1,0 +1,33 @@
+---
+title: "Other"
+description: "Configure a test user with a custom or multi-step login flow"
+icon: "ellipsis"
+---
+
+Use this when your application's login flow doesn't fit any of the standard categories. This could be a multi-step wizard, a custom SSO integration, a hardware token, or a proprietary authentication protocol.
+
+## What to provide
+
+Describe the login flow in as much detail as possible:
+
+```text
+Step 1: Navigate to https://app.example.com/login
+Step 2: Enter username: testuser@example.com
+Step 3: Enter password: YourTestPassword123
+Step 4: On the next screen, enter the organisation code: ORG-12345
+Step 5: Complete the CAPTCHA (note: we've disabled CAPTCHA for IPs on the allowlist)
+Step 6: You will be redirected to the dashboard
+```
+
+Include any of the following if relevant:
+- Credentials (username, password, tokens, keys)
+- URLs for each step in the flow
+- Expected page titles or form field labels
+- Any cookies or local storage values that need to be set
+- Session tokens that can be reused (and their expiry)
+
+## Tips for complex flows
+
+The more specific you are, the better. Mjolnir uses these instructions to construct its login automation. Ambiguous or incomplete instructions are the most common reason test users fail to authenticate.
+
+If you're unsure how to describe the flow, contact us at [security@borgresearch.io](mailto:security@borgresearch.io) and we'll work through it with you.

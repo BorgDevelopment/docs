@@ -1,0 +1,85 @@
+---
+title: "Step 3: Test Users"
+description: "Add authenticated accounts so Mjolnir can test access controls"
+icon: "users"
+---
+
+Test users allow Mjolnir to operate as a real user would, logging in, navigating authenticated flows, and probing access controls. This dramatically improves coverage and result quality.
+
+Without test users, Mjolnir will attempt to self-register accounts during the test. This is less reliable and may result in reduced coverage, particularly for authenticated flows, privilege escalation checks, and tenant isolation testing.
+
+<Warning>
+  We strongly recommend adding at least one user per role before starting a run. Skipping this step significantly limits what Mjolnir can find.
+</Warning>
+
+## Two categories of test users
+
+### Role coverage: test every permission level
+
+Add at least one user per role in your system. Mjolnir uses these to check for **privilege escalation**, testing whether a lower-privileged user can access resources or perform actions they shouldn't.
+
+**Suggested roles to cover:** Admin, Manager, Viewer
+
+Your application may use different role names. Use whatever matches your actual permission model.
+
+### Tenant isolation: test cross-tenant data leaks
+
+Add users from at least two separate tenants. Mjolnir uses these to verify that one tenant's data cannot be accessed by another.
+
+**Minimum:** 2 users from different tenants.
+
+---
+
+## Adding a test user
+
+Click **+ Add User** to open the add user modal.
+
+**Fields:**
+- **Name**: a label for your reference, e.g. *"Admin user, Tenant A"*
+- **Role**: e.g. Admin, Viewer, Tenant B Manager
+- **Auth method**: how this user logs in (see below)
+- **Authentication instructions**: credentials or login steps for this specific auth method
+
+### Supported auth methods
+
+Select the login method that matches how this user authenticates:
+
+<CardGroup cols={2}>
+  <Card title="Google" icon="google" href="/mjolnir/test-users/google">
+    OAuth via Google Workspace
+  </Card>
+  <Card title="Microsoft" icon="microsoft" href="/mjolnir/test-users/microsoft">
+    OAuth via Microsoft / Entra ID
+  </Card>
+  <Card title="Username & Password" icon="lock" href="/mjolnir/test-users/username-password">
+    Standard credentials
+  </Card>
+  <Card title="Username & Password + MFA" icon="shield" href="/mjolnir/test-users/username-password-mfa">
+    Credentials with TOTP/authenticator
+  </Card>
+  <Card title="Username & Password + Email Verification" icon="envelope" href="/mjolnir/test-users/username-password-email">
+    Credentials with email code
+  </Card>
+  <Card title="Username & Password + SMS Verification" icon="mobile" href="/mjolnir/test-users/username-password-sms">
+    Credentials with SMS code
+  </Card>
+  <Card title="API Key" icon="key" href="/mjolnir/test-users/api-key">
+    Direct API key authentication
+  </Card>
+  <Card title="OAuth Client Credentials" icon="server" href="/mjolnir/test-users/oauth-client-credentials">
+    Machine-to-machine OAuth
+  </Card>
+  <Card title="OAuth Password Grant" icon="arrow-right-to-bracket" href="/mjolnir/test-users/oauth-password-grant">
+    OAuth with username & password
+  </Card>
+  <Card title="Magic Link via Email" icon="wand-magic-sparkles" href="/mjolnir/test-users/magic-link">
+    Passwordless email login
+  </Card>
+  <Card title="Other" icon="ellipsis" href="/mjolnir/test-users/other">
+    Custom or multi-step login flows
+  </Card>
+</CardGroup>
+
+<Card title="Next: Code & Documentation" icon="arrow-right" href="/mjolnir/code-and-docs/repositories">
+  Select the repositories and files Mjolnir should analyse
+</Card>

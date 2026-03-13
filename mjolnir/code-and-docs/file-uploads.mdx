@@ -1,0 +1,61 @@
+---
+title: "File Uploads"
+description: "Upload OpenAPI specs, documentation, and supporting context"
+icon: "file-arrow-up"
+---
+
+In addition to your source code, you can upload supplementary files that help Mjolnir understand your application's architecture, data model, and intended behaviour.
+
+The more context Mjolnir has, the more targeted and accurate the assessment will be.
+
+## What to upload
+
+<AccordionGroup>
+  <Accordion title="OpenAPI / Swagger specification (recommended)">
+    **Accepted formats:** `.json`, `.yaml`, `.yml`
+
+    An OpenAPI spec is the single most valuable thing you can provide beyond source code. It gives Mjolnir a complete, structured map of your API endpoints, request/response schemas, authentication requirements, and parameter types, without having to infer all of this from crawling.
+
+    If you have one, upload it. If you have multiple (e.g. v2 and v3), upload both.
+
+    Common locations in a project:
+    - `openapi.json` / `openapi.yaml` in the root
+    - `docs/api.yaml`
+    - Auto-generated at `/api-docs` or `/swagger.json` at runtime (export it and upload the file)
+  </Accordion>
+
+  <Accordion title="Architecture documentation">
+    **Accepted formats:** `.pdf`, `.md`, `.txt`, `.docx`
+
+    Any documentation that describes your application's architecture, data flows, or infrastructure topology. This helps Mjolnir understand the relationship between components, which is especially useful for microservice architectures where the attack surface spans multiple services.
+  </Accordion>
+
+  <Accordion title="User role definitions / permission matrix">
+    **Accepted formats:** `.json`, `.yaml`, `.pdf`, `.md`
+
+    A description of your application's roles and what each one can and cannot do. This directly improves the quality of privilege escalation tests. Mjolnir can check whether every boundary in your permission model is actually enforced.
+
+    Examples:
+    - A table showing which roles can access which endpoints
+    - A RBAC/ABAC configuration file
+    - A narrative description of your permission model
+  </Accordion>
+
+  <Accordion title="User journeys / workflows">
+    **Accepted formats:** `.pdf`, `.png`, `.md`
+
+    Descriptions or diagrams of the key user flows in your application: signup, checkout, approval workflows, data export, etc. This helps Mjolnir prioritise which flows carry the most business risk.
+  </Accordion>
+
+  <Accordion title="Other">
+    Anything else you think would help. When in doubt, include it. Mjolnir will use what's relevant and ignore what isn't.
+  </Accordion>
+</AccordionGroup>
+
+## Upload instructions
+
+Drag and drop files onto the upload area, or click to open a file picker. Each uploaded file will show its name, detected type, and file size. You can remove any file before proceeding.
+
+<Card title="Next: Domain Verification" icon="arrow-right" href="/mjolnir/domain-verification/overview">
+  Verify you own the domains you're testing
+</Card>

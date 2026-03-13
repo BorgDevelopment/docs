@@ -1,0 +1,103 @@
+<svg width="1200" height="480" viewBox="0 0 1200 480" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bgGrad" x1="0" y1="0" x2="1200" y2="480" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#091320"/>
+      <stop offset="50%" stop-color="#0f1a29"/>
+      <stop offset="100%" stop-color="#091320"/>
+    </linearGradient>
+    <radialGradient id="glowCenter" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#6CB6FF" stop-opacity="0.10"/>
+      <stop offset="100%" stop-color="#6CB6FF" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="vignette" cx="50%" cy="50%" r="70%">
+      <stop offset="0%" stop-color="transparent"/>
+      <stop offset="100%" stop-color="#000" stop-opacity="0.55"/>
+    </radialGradient>
+    <filter id="bloom" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="14" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+    <filter id="softBlur">
+      <feGaussianBlur stdDeviation="48"/>
+    </filter>
+    <clipPath id="bounds">
+      <rect width="1200" height="480"/>
+    </clipPath>
+  </defs>
+
+  <rect width="1200" height="480" fill="url(#bgGrad)"/>
+
+  <g clip-path="url(#bounds)">
+
+    <!-- Background depth orbs -->
+    <ellipse cx="150" cy="100" rx="300" ry="220" fill="#1a3a5c" opacity="0.18" filter="url(#softBlur)"/>
+    <ellipse cx="1070" cy="390" rx="320" ry="210" fill="#0e2040" opacity="0.28" filter="url(#softBlur)"/>
+    <ellipse cx="600" cy="240" rx="340" ry="260" fill="url(#glowCenter)"/>
+
+    <!-- Subtle grid -->
+    <g opacity="0.03" stroke="#6CB6FF" stroke-width="1">
+      <line x1="0" y1="120" x2="1200" y2="120"/>
+      <line x1="0" y1="240" x2="1200" y2="240"/>
+      <line x1="0" y1="360" x2="1200" y2="360"/>
+      <line x1="200" y1="0" x2="200" y2="480"/>
+      <line x1="400" y1="0" x2="400" y2="480"/>
+      <line x1="600" y1="0" x2="600" y2="480"/>
+      <line x1="800" y1="0" x2="800" y2="480"/>
+      <line x1="1000" y1="0" x2="1000" y2="480"/>
+    </g>
+
+    <!-- Rings centered at (600, 240) -->
+    <circle cx="600" cy="240" r="180" stroke="#6CB6FF" stroke-width="0.5" opacity="0.10"/>
+    <circle cx="600" cy="240" r="136" stroke="#6CB6FF" stroke-width="0.6" opacity="0.14"/>
+    <circle cx="600" cy="240" r="100" stroke="#6CB6FF" stroke-width="0.8" opacity="0.18"/>
+
+    <!-- Cardinal ticks on middle ring -->
+    <g stroke="#6CB6FF" stroke-width="1" opacity="0.25">
+      <line x1="600" y1="98"  x2="600" y2="110"/>
+      <line x1="600" y1="370" x2="600" y2="382"/>
+      <line x1="462" y1="240" x2="474" y2="240"/>
+      <line x1="726" y1="240" x2="738" y2="240"/>
+    </g>
+    <g stroke="#6CB6FF" stroke-width="0.8" opacity="0.14">
+      <line x1="503" y1="143" x2="510" y2="152"/>
+      <line x1="690" y1="328" x2="697" y2="337"/>
+      <line x1="697" y1="143" x2="690" y2="152"/>
+      <line x1="510" y1="328" x2="503" y2="337"/>
+    </g>
+
+    <!-- Bloom glow behind logo -->
+    <g transform="translate(523.91, 153.00) scale(0.1388)" opacity="0.28" filter="url(#bloom)">
+      <path d="M603.998 676V879.977L873.996 1090L873.998 879.977L603.998 676Z" fill="#6CB6FF"/>
+      <path d="M578.002 676V879.977L308.004 1090L308.002 879.977L578.002 676Z" fill="#6CB6FF"/>
+      <path d="M578.017 610H308.017L30.0137 340.002L308.017 340L578.017 610Z" fill="#6CB6FF"/>
+      <path d="M0.000650103 787.445L190.919 643.358L578.415 639.086L381.838 787.445L0.000650103 787.445Z" fill="#6CB6FF"/>
+      <path d="M1182.41 787.445L991.495 643.358L603.999 639.086L800.576 787.445L1182.41 787.445Z" fill="#6CB6FF"/>
+      <path d="M578.513 578.415L387.595 387.497L381.934 0.00138107L578.513 196.578L578.513 578.415Z" fill="#6CB6FF"/>
+      <path d="M604.368 610.416H874.368L1152.37 340.418L874.368 340.416L604.368 610.416Z" fill="#6CB6FF"/>
+      <path d="M604.928 578.415L795.847 387.497L801.507 0.00138107L604.928 196.578L604.928 578.415Z" fill="#6CB6FF"/>
+    </g>
+
+    <!-- Logo — sharp, geometrically centered at (600, 240) -->
+    <g transform="translate(517.91, 160.00) scale(0.1388)" shape-rendering="geometricPrecision">
+      <path d="M603.998 676V879.977L873.996 1090L873.998 879.977L603.998 676Z" fill="#6CB6FF"/>
+      <path d="M578.002 676V879.977L308.004 1090L308.002 879.977L578.002 676Z" fill="#6CB6FF"/>
+      <path d="M578.017 610H308.017L30.0137 340.002L308.017 340L578.017 610Z" fill="#6CB6FF"/>
+      <path d="M0.000650103 787.445L190.919 643.358L578.415 639.086L381.838 787.445L0.000650103 787.445Z" fill="#6CB6FF"/>
+      <path d="M1182.41 787.445L991.495 643.358L603.999 639.086L800.576 787.445L1182.41 787.445Z" fill="#6CB6FF"/>
+      <path d="M578.513 578.415L387.595 387.497L381.934 0.00138107L578.513 196.578L578.513 578.415Z" fill="#6CB6FF"/>
+      <path d="M604.368 610.416H874.368L1152.37 340.418L874.368 340.416L604.368 610.416Z" fill="#6CB6FF"/>
+      <path d="M604.928 578.415L795.847 387.497L801.507 0.00138107L604.928 196.578L604.928 578.415Z" fill="#6CB6FF"/>
+    </g>
+
+    <!-- Corner brackets -->
+    <g stroke="#6CB6FF" stroke-width="1" opacity="0.08">
+      <line x1="40" y1="40" x2="90" y2="40"/><line x1="40" y1="40" x2="40" y2="90"/>
+      <line x1="1160" y1="40" x2="1110" y2="40"/><line x1="1160" y1="40" x2="1160" y2="90"/>
+      <line x1="40" y1="440" x2="90" y2="440"/><line x1="40" y1="440" x2="40" y2="390"/>
+      <line x1="1160" y1="440" x2="1110" y2="440"/><line x1="1160" y1="440" x2="1160" y2="390"/>
+    </g>
+
+    <!-- Vignette -->
+    <rect width="1200" height="480" fill="url(#vignette)"/>
+  </g>
+</svg>

@@ -1,0 +1,45 @@
+---
+title: "Magic Link via Email"
+description: "Configure a test user that logs in via a passwordless email link"
+icon: "wand-magic-sparkles"
+---
+
+Use this when your application sends a one-click login link to the user's email address instead of using a password.
+
+## What to provide
+
+```text
+Email: testuser@example.com
+Magic link delivery: [explain how Mjolnir can access the link]
+```
+
+## Providing access to the magic link
+
+Mjolnir needs to retrieve the magic link from the inbox automatically.
+
+<Tabs>
+  <Tab title="Test email service (recommended)">
+    Use [Mailosaur](https://mailosaur.com) or [Mailtrap](https://mailtrap.io) and provide the API credentials:
+
+    ```text
+    Mailosaur Server ID: abc123
+    Mailosaur API Key: your-api-key
+    Inbox email: testuser.abc123@mailosaur.net
+    ```
+  </Tab>
+  <Tab title="Email webhook forwarding">
+    Configure the test inbox to forward incoming emails to a webhook. Include the webhook URL and any authentication it requires.
+  </Tab>
+  <Tab title="IMAP access">
+    ```text
+    IMAP host: imap.example.com
+    IMAP port: 993
+    IMAP username: testuser@example.com
+    IMAP password: imappassword
+    ```
+  </Tab>
+</Tabs>
+
+<Tip>
+  Magic link flows are time-sensitive. Links typically expire within minutes. A test email service with a fast API (like Mailosaur) is the most reliable option since it avoids IMAP polling delays.
+</Tip>

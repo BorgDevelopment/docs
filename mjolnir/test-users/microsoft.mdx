@@ -1,0 +1,31 @@
+---
+title: "Microsoft"
+description: "Configure a test user that authenticates via Microsoft / Entra ID"
+icon: "microsoft"
+---
+
+Use this auth method when your application uses "Sign in with Microsoft" via Azure Active Directory (now Entra ID) or a Microsoft 365 account.
+
+## What to provide
+
+```text
+Email: testuser@yourtenant.onmicrosoft.com
+Entra ID tenant: your-tenant.onmicrosoft.com
+Password: YourTestPassword
+Note any conditional access policies that may block automated login
+```
+
+## Conditional access policies
+
+Conditional access policies (CAP) can block Mjolnir's login attempts if they require:
+- A compliant device
+- A known IP range
+- MFA from a specific authenticator app
+
+If your tenant has CAPs, either:
+1. Create an exclusion for the test account in Entra ID > **Security > Conditional Access > Policies**
+2. Or note the policy details in the instructions so we can account for them
+
+<Tip>
+  Create a dedicated test account in your Entra ID tenant rather than using a real employee account. Guest accounts work too if your application supports them.
+</Tip>

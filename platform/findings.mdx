@@ -1,0 +1,65 @@
+---
+title: "Findings"
+description: "Track, triage, and remediate security issues across your organisation"
+icon: "magnifying-glass"
+---
+
+Findings are security issues identified across your assets and pentest runs. Everything Mjolnir discovers, plus any issues surfaced through black-box testing or manual triage, lands here.
+
+<Frame caption="The Findings view shows all security issues across your workspace, sorted by severity">
+  <img src="/images/platform/findings-overview.png" alt="Odin findings dashboard showing a list of security findings with severity indicators" />
+</Frame>
+
+## Severity levels
+
+Each finding is assigned a severity based on exploitability and impact:
+
+| Severity | Description |
+|----------|-------------|
+| **Critical** | Immediate exploitation risk. Requires urgent remediation. |
+| **High** | Significant risk with a realistic exploitation path. Address promptly. |
+| **Medium** | Real issue but harder to exploit or lower impact. Plan remediation. |
+| **Low** | Minor issue or defence-in-depth improvement. Fix when practical. |
+
+## Finding status
+
+Each finding moves through a status lifecycle:
+
+- **New**: just identified, not yet reviewed
+- **In progress**: remediation is underway
+- **Solved**: fix has been applied and verified
+- **Ignored**: acknowledged but accepted as a known risk
+
+## What's inside a finding
+
+Every finding includes the detail your engineering team needs to take action:
+
+- **Title and description**: a clear summary of the vulnerability
+- **Severity rating**: Critical, High, Medium, or Low
+- **Affected asset**: the domain, endpoint, or resource where the issue was found
+- **Reproduction steps**: exact steps to reproduce the vulnerability
+- **Suggested fix**: actionable remediation guidance
+- **Source**: whether the finding came from Mjolnir, black-box testing, or manual triage
+
+## Filtering and search
+
+Use the filters at the top of the Findings page to narrow down what you see:
+
+- **Severity**: focus on Critical and High first
+- **Status**: show only New findings, or hide Ignored ones
+- **Source**: filter by Mjolnir, black-box, or manual findings
+- **Asset**: scope findings to a specific domain or endpoint
+
+<Tip>
+  Bookmark a filtered view (the URL updates as you filter) to quickly return to the findings that matter most to your team.
+</Tip>
+
+## Pushing findings to your issue tracker
+
+If you've connected Linear, Jira, or GitHub Issues, you can push any finding directly to your issue tracker with one click. The finding title, description, severity, and suggested fix are all included.
+
+Set up your integration at **Management > Integrations**.
+
+<Card title="Set up integrations" icon="plug" href="/platform/integrations/linear">
+  Connect your issue tracker
+</Card>
