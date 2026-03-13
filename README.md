@@ -1,55 +1,81 @@
-# Mintlify Starter Kit
+# Odin Documentation
 
-Use the starter kit to get your docs deployed and ready to customize.
+Documentation site for the [Odin](https://odin.borghq.io) security platform by Borg Security. Built with [Mintlify](https://mintlify.com).
 
-Click the green **Use this template** button at the top of this repo to copy the Mintlify starter kit. The starter kit contains examples with
+## What's in here
 
-- Guide pages
-- Navigation
-- Customizations
-- API reference pages
-- Use of popular components
+- **Getting Started** — introduction to the Odin platform, quickstart guide
+- **Platform** — findings, reports, and integrations (GitHub, Linear, Jira)
+- **Mjolnir** — setup wizard, test users, code & documentation, domain verification
 
-**[Follow the full quickstart guide](https://starter.mintlify.com/quickstart)**
+## Local development
 
-## AI-assisted writing
-
-Set up your AI coding tool to work with Mintlify:
+Install the Mintlify CLI:
 
 ```bash
-npx skills add https://mintlify.com/docs
+npm i -g mintlify
 ```
 
-This command installs Mintlify's documentation skill for your configured AI tools like Claude Code, Cursor, Windsurf, and others. The skill includes component reference, writing standards, and workflow guidance.
+Then start the local preview server from the repo root:
 
-See the [AI tools guides](/ai-tools) for tool-specific setup.
-
-## Development
-
-Install the [Mintlify CLI](https://www.npmjs.com/package/mint) to preview your documentation changes locally. To install, use the following command:
-
-```
-npm i -g mint
+```bash
+npx mintlify dev
 ```
 
-Run the following command at the root of your documentation, where your `docs.json` is located:
+The site will be available at `http://localhost:3000`.
+
+### Useful commands
+
+| Command | What it does |
+|---------|-------------|
+| `npx mintlify dev` | Start local preview |
+| `npx mintlify broken-links` | Check for broken internal links |
+| `npx mintlify validate` | Validate the docs build |
+
+## Project structure
 
 ```
-mint dev
+docs/
+├── getting-started/       # Introduction and quickstart
+├── platform/              # Findings, reports, integrations
+├── mjolnir/               # Mjolnir setup and configuration
+│   ├── setup/             # Connect GitHub, scope, allowlisting
+│   ├── test-users/        # Auth method guides
+│   ├── code-and-docs/     # Repositories and file uploads
+│   └── domain-verification/
+├── images/                # Screenshots and assets
+├── logo/                  # Brand logos (light/dark)
+├── snippets/              # Reusable MDX snippets
+└── docs.json              # Site configuration
 ```
 
-View your local preview at `http://localhost:3000`.
+## Adding content
 
-## Publishing changes
+1. Create or edit an `.mdx` file in the appropriate directory
+2. Add YAML frontmatter with at least `title` and `description`
+3. Add the page path to `docs.json` under the correct navigation group
+4. Preview locally with `npx mintlify dev`
 
-Install our GitHub app from your [dashboard](https://dashboard.mintlify.com/settings/organization/github-app) to propagate changes from your repo to your deployment. Changes are deployed to production automatically after pushing to the default branch.
+## Adding images
 
-## Need help?
+Place screenshots and diagrams in `images/` using the subdirectory that matches the section:
 
-### Troubleshooting
+- `images/platform/` — platform features (findings, reports)
+- `images/mjolnir/` — Mjolnir run dashboard, setup wizard
+- `images/integrations/` — integration setup flows
 
-- If your dev environment isn't running: Run `mint update` to ensure you have the most recent version of the CLI.
-- If a page loads as a 404: Make sure you are running in a folder with a valid `docs.json`.
+Reference them in MDX with a `<Frame>` component:
 
-### Resources
-- [Mintlify documentation](https://mintlify.com/docs)
+```mdx
+<Frame caption="Description of the screenshot">
+  <img src="/images/platform/example.png" alt="Descriptive alt text" />
+</Frame>
+```
+
+## Deployment
+
+Changes pushed to the default branch are deployed automatically via the Mintlify GitHub app.
+
+## Support
+
+Reach out at [security@borgresearch.io](mailto:security@borgresearch.io).
