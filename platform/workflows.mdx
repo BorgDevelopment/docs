@@ -1,0 +1,88 @@
+---
+title: "Workflows"
+description: "Automate notifications and actions when key events happen in your workspace"
+icon: "bolt-auto"
+---
+
+Workflows let you set up event-driven automations that fire when something happens in your workspace — a new finding is discovered, an asset appears, or a report is generated. Use them to push notifications to Slack, Discord, or email without leaving Odin.
+
+{/* TODO: add screenshot */}
+
+## Events
+
+Every workflow starts with an event trigger:
+
+| Event | Fires when |
+|-------|-----------|
+| **New Finding** | A finding is created (by Mjolnir, black-box testing, or manual triage) |
+| **New Asset Discovered** | A new domain, subdomain, IP, or URL is added to your attack surface |
+| **New Report** | A pentest report or findings summary is generated |
+
+## Conditions
+
+Conditions let you filter which events actually trigger the workflow. Each condition compares a variable path (e.g. `severity.cvss`, `asset.type`) against a value using one of three operators:
+
+| Operator | Behaviour |
+|----------|-----------|
+| **Equals** | Exact match — the variable must equal the specified value |
+| **Includes** | The variable contains the specified value (useful for arrays or partial matches) |
+| **Not Includes** | The variable does not contain the specified value |
+
+Conditions are optional. If you skip them, the workflow fires on every matching event.
+
+## Actions
+
+When an event passes your conditions, one or more actions execute.
+
+### Webhook
+
+Send an HTTP POST to an external URL. Three presets are available:
+
+- **Slack** — sends a formatted message to a Slack incoming webhook
+- **Discord** — sends a formatted message to a Discord webhook
+- **Custom** — sends a JSON payload to any URL you specify
+
+Use `{{variable}}` template syntax in your message body to include dynamic data from the event. For example, `{{finding.title}}` inserts the finding's title.
+
+<Tip>
+  The webhook URL must be publicly reachable. Odin rejects requests to private IP ranges.
+</Tip>
+
+### Email
+
+Send an email when the workflow fires. Configure the recipient address, subject line, and body. The same `{{variable}}` template syntax is available in all three fields.
+
+## Creating a workflow
+
+<Steps>
+  <Step title="Open the Workflows page">
+    Navigate to **Management > Workflows** in the sidebar.
+  </Step>
+  <Step title="Drag an event node onto the canvas">
+    Pick the event type that should trigger your workflow.
+  </Step>
+  <Step title="Configure the trigger">
+    Select the specific event and any relevant parameters.
+  </Step>
+  <Step title="Add a condition (optional)">
+    Drag a condition node onto the canvas and configure the variable path, operator, and value.
+  </Step>
+  <Step title="Drag an action node">
+    Choose Webhook or Email as your action type.
+  </Step>
+  <Step title="Configure the action">
+    Fill in the webhook URL or email details, using `{{variable}}` placeholders where needed.
+  </Step>
+  <Step title="Enable the workflow">
+    Toggle the workflow on. It will start firing on the next matching event.
+  </Step>
+</Steps>
+
+## Managing workflows
+
+From the Workflows page you can:
+
+- **Enable / disable** — toggle a workflow on or off without deleting it
+- **Rename** — click the workflow name to edit it
+- **Delete** — remove a workflow permanently
+- **Execution count** — see how many times a workflow has fired

@@ -1,0 +1,39 @@
+---
+title: "Asset Relations"
+description: "Understand how your assets connect to each other"
+icon: "diagram-project"
+---
+
+Asset relations show how the assets in your attack surface are connected. Use them to trace infrastructure dependencies, spot shared hosting, and understand the hierarchy of your domains.
+
+## Domain relations
+
+Domains and subdomains form a natural hierarchy:
+
+- **Root domain** — the top-level domain (e.g. `example.com`)
+- **Parent** — the domain one level up (e.g. `api.example.com` → `example.com`)
+- **Children** — subdomains beneath a domain (e.g. `example.com` → `api.example.com`, `app.example.com`)
+
+Navigating these relations lets you quickly see the full subdomain tree under any root domain.
+
+## Certificate relations
+
+When multiple assets share the same TLS certificate (identified by SHA-256 fingerprint), Odin links them together. This is common with wildcard certificates or multi-domain (SAN) certificates.
+
+Certificate relations help you identify:
+
+- Assets served from the same infrastructure
+- Wildcard certificate coverage across your subdomains
+- Certificate expiry risk affecting multiple assets at once
+
+## IP relations
+
+IP relations connect assets that resolve to the same IP address. For each IP, you can see:
+
+- **Domains** — all domains and subdomains resolving to this IP
+- **Open ports** — ports discovered during network recon
+- **Recon status** — whether network reconnaissance has been run against this IP
+
+<Tip>
+  Use IP relations to find shared infrastructure. If multiple domains resolve to the same IP, a vulnerability on one may affect all of them.
+</Tip>

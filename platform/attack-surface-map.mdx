@@ -1,0 +1,44 @@
+---
+title: "Attack Surface Map"
+description: "Interactive 3D visualisation of your entire attack surface"
+icon: "map"
+---
+
+The Attack Surface Map is an interactive visualisation of your entire attack surface. It renders your assets as nodes and their relationships as edges, giving you a bird's-eye view of your infrastructure.
+
+{/* TODO: add screenshot */}
+
+## What the map shows
+
+- **Nodes** represent individual assets (domains, subdomains, IPs)
+- **Edges** represent relationships between assets (domain hierarchy, DNS resolution)
+
+The layout arranges nodes by their relationships, so related assets cluster together naturally.
+
+## Node types
+
+Odin classifies nodes based on the asset's characteristics:
+
+| Node type | Classification |
+|-----------|---------------|
+| **Root Domain** | A top-level domain in your workspace |
+| **Subdomain** | A subdomain beneath a root domain |
+| **Server** | An IP address serving web traffic |
+| **Database** | An IP with database ports open (3306, 5432, 27017, 1433, 6379) |
+| **Auth Gateway** | An IP or subdomain running an authentication service |
+
+## Filtering
+
+Use the controls above the map to narrow what's displayed:
+
+- **Search** — find a specific asset by name
+- **Finding status** — filter nodes by their associated finding status: Reported, Mitigating, or Mitigated
+
+Nodes with findings are visually highlighted so you can quickly spot areas of risk.
+
+## Interacting with the map
+
+- **Click** a node to select it and view its details in the sidebar
+- **Pan** by clicking and dragging the background
+- **Zoom** with the scroll wheel or pinch gesture
+- **Finding indicators** — nodes with open findings display a coloured ring matching the highest severity

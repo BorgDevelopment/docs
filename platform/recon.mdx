@@ -1,0 +1,55 @@
+---
+title: "Reconnaissance"
+description: "Automated discovery and enumeration of your external attack surface"
+icon: "radar"
+---
+
+Reconnaissance automates the discovery and enumeration of your external attack surface. Point Odin at your root domains and IPs, and it maps out subdomains, open ports, services, and potential takeover risks.
+
+{/* TODO: add screenshot */}
+
+## Recon types
+
+<CardGroup cols={2}>
+  <Card title="Domain Recon" icon="globe">
+    Runs DNS enumeration, HTTP probing, and TLS inspection on domains and subdomains. Discovers new subdomains, checks for DNS misconfigurations, and identifies web technologies.
+  </Card>
+  <Card title="Network Recon" icon="network-wired">
+    Performs port scanning and service detection on IP addresses. Identifies open ports, running services, and their versions.
+  </Card>
+</CardGroup>
+
+## Configuration options
+
+| Option | Description |
+|--------|------------|
+| **Subdomain fuzzing** | Enable or disable brute-force subdomain discovery |
+| **Port range** | Set the start and end ports for network scanning |
+| **Takeover risk detection** | Check for subdomain takeover vulnerabilities (dangling DNS records) |
+
+## Task status
+
+Each recon task moves through a lifecycle:
+
+- **Awaiting** — queued, waiting to start
+- **Pending** — about to begin processing
+- **Processing** — actively running
+- **Completed** — finished successfully
+- **Failed** — encountered an error (check the task log for details)
+
+## Progress tracking
+
+While a task is processing, you can monitor:
+
+- **Stage name** — the current step (e.g. DNS enumeration, port scanning)
+- **Percentage** — overall progress
+- **ETA** — estimated time remaining
+- **Item counts** — number of assets discovered or scanned so far
+
+## Continuous Asset Discovery
+
+Continuous Asset Discovery (CAD) monitors your root domains on an ongoing basis, automatically detecting new subdomains as they appear. This keeps your attack surface up to date without manual intervention.
+
+<Note>
+  CAD is configured per root domain. Contact us at [security@borgresearch.io](mailto:security@borgresearch.io) to enable it for your workspace.
+</Note>
