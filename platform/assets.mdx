@@ -1,0 +1,54 @@
+---
+title: "Assets"
+description: "View and manage your organisation's external attack surface"
+icon: "globe"
+---
+
+Assets represent your organisation's external attack surface — the domains, subdomains, IPs, and URLs that are visible from the internet. Everything Odin discovers or that you add manually appears here.
+
+{/* TODO: add screenshot */}
+
+## Asset types
+
+| Type | Description |
+|------|------------|
+| **Domain** | A root domain (e.g. `example.com`) |
+| **Subdomain** | A subdomain under a root domain (e.g. `api.example.com`) |
+| **IP** | An IP address associated with your infrastructure |
+| **URL** | A specific endpoint or page on one of your domains |
+
+## Adding assets
+
+There are two ways to add assets:
+
+- **Manual** — click **Add Asset**, select the type, and enter the details
+- **Bulk import** — click **Import** and upload a CSV or JSON file containing multiple assets
+
+## Asset detail
+
+Click any asset to open its detail view. Depending on the asset type and recon status, you'll see:
+
+- **Metadata** — type, source, creation date, and current status
+- **DNS data** — DNS records resolved for the asset
+- **HTTP data** — response headers, status codes, and redirects
+- **TLS data** — certificate details, expiry, and chain information
+- **Technologies** — detected web technologies and frameworks
+- **Related findings** — security issues linked to this asset
+
+## Filtering and search
+
+Use the filters at the top of the Assets page to narrow your view:
+
+- **Type** — show only domains, subdomains, IPs, or URLs
+- **Status** — filter by active, inactive, or unresolved assets
+- **Source** — filter by how the asset was discovered (manual, recon, import)
+- **Search** — full-text search across asset names and metadata
+- **Sort** — order by name, date added, or type
+
+<Tip>
+  The URL updates as you filter, so you can bookmark any filtered view. Keyboard shortcuts: `c` create, `i` import, `e` export, `j`/`k` navigate the list.
+</Tip>
+
+## Exporting
+
+Click **Export** to download your assets as CSV or JSON. You can select which columns to include in the export.

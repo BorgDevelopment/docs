@@ -1,0 +1,54 @@
+---
+title: "Team Management"
+description: "Manage workspace members, roles, and permissions"
+icon: "users"
+---
+
+Team management controls who has access to your workspace and what they can do. Invite colleagues, assign roles, and adjust permissions from a single page.
+
+{/* TODO: add screenshot */}
+
+## Roles
+
+Odin uses a five-tier role hierarchy. Each role inherits the permissions of the roles below it.
+
+| Role | Permissions |
+|------|------------|
+| **Owner** | Full control — billing, workspace deletion, and all admin actions |
+| **Admin** | Manage members, integrations, workflows, and workspace settings |
+| **Member** | Create and manage findings, reports, assets, and recon tasks |
+| **User** | View all data and push findings to integrations |
+| **Read Only** | View findings, reports, and assets — no modifications |
+
+<Note>
+  At least one Owner must exist at all times. You cannot remove or downgrade the last Owner.
+</Note>
+
+## Inviting members
+
+<Steps>
+  <Step title="Go to Management > Team">
+    Open the Team page from the sidebar.
+  </Step>
+  <Step title="Click Add User">
+    The invitation dialog opens.
+  </Step>
+  <Step title="Enter email and role">
+    Type the new member's email address and select a role. You can only assign roles below your own.
+  </Step>
+  <Step title="Invitation sent">
+    The new member receives an email with a link to join your workspace.
+  </Step>
+</Steps>
+
+## Changing a role
+
+Click on a member in the Team list, then select a new role from the dropdown. You cannot change your own role.
+
+## Removing a member
+
+Click on a member and select **Remove**. You cannot remove yourself or the last Owner.
+
+## Resending an invitation
+
+If a member hasn't signed up yet, their status shows as **Pending**. Click on their entry and select **Resend invitation** to send the email again.

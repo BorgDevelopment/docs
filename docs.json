@@ -30,9 +30,20 @@
             "pages": [
               "platform/findings",
               "platform/reports",
+              "platform/workflows",
+              "platform/team-management",
               "platform/integrations/github",
               "platform/integrations/linear",
               "platform/integrations/jira"
+            ]
+          },
+          {
+            "group": "Attack Surface",
+            "pages": [
+              "platform/assets",
+              "platform/recon",
+              "platform/attack-surface-map",
+              "platform/asset-relations"
             ]
           }
         ]
